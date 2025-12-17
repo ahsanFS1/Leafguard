@@ -1,4 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -13,6 +14,19 @@ from training.config import LABELS_PATH, MODEL_PATH
 load_dotenv()
 
 app = FastAPI()
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://172.28.4.58:3000"  # Network address from your dev server
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load the trained model
 model = load_model(MODEL_PATH)

@@ -13,6 +13,8 @@ DATASET_ROOT = os.path.join(
 
 TRAIN_DIR = os.path.join(DATASET_ROOT, "train")
 VAL_DIR   = os.path.join(DATASET_ROOT, "valid")
+MODEL_PATH = os.path.join(PROJECT_ROOT, "models", "leafguard_mobilenetv2.h5")
+LABELS_PATH = os.path.join(PROJECT_ROOT, "models", "labels.txt")
 IMG_SIZE = 224
 BATCH_SIZE = 32
 
